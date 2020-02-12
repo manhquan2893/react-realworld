@@ -1,26 +1,56 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React, { Component } from 'react'
+import {Switch,Route} from 'react-router'
+import Home from './components/Home'
+import Register from './components/Register'
+import Login from './components/Login'
+import Header from './components/Header'
+import {push} from 'connected-react-router'
+import {connect} from 'react-redux'
+import store from './configureStore'
+import {REDIRECT,APP_LOAD} from './constants/actionTypes'
+import api from './services/api'
+const mapStateToProps= state=>{
+  return {
+      redirectTo:state.auth.redirectTo,
+      currentUser:state.auth.currentUser
+  }
+}
+const mapDispatchToProps=dispatch => ({
+  onRedirect: () =>
+    dispatch({ type: REDIRECT }),
+  onLoad:(payload,token) =>{
+    dispatch({ type: APP_LOAD,payload,token})
+  }
+});
+export class App extends Component {
+  componentWillReceiveProps(nextProps){
+    if(nextProps.redirectTo){
+      store.dispatch(push('/'))
+      this.props.onRedirect()
+    }
+  }
+  componentWillMount(){
+    let token= localStorage.getItem('jwt')
+    console.log(token)
+    if(token){
+      api.setHeader(token)
+      let payload=api.auth.current()
+      this.props.onLoad(payload,token)
+    }
+  }
+  render() {
+    return (
+      <div>
+        <Header currentUser={this.props.currentUser}/>
+        <Switch>
+            <Route exact path="/" component={Home}/>
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
+            {/* <Route path="/@:username" component={Profile} /> */}
+        </Switch>
+      </div>
+    )
+  }
 }
 
-export default App;
+export default connect(mapStateToProps,mapDispatchToProps)(App)
