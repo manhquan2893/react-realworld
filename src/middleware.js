@@ -9,7 +9,6 @@ export const promiseMiddleware= store=> next=>action=>{
         .catch(({response})=>{
             action.payload=response.data
             action.error=true
-            console.log(action)
             next(action);
         })
         return

@@ -13,9 +13,15 @@ const auth={
     login:(email,password)=>
         request.post('users/login',{user:{email,password}})    
 }
+const limit = 10
 const article={
-    all:()=>
-        request.get('/articles')
+    all:(page)=>{
+        let offset= (page-1)*limit
+        return request.get(`/articles?limit=${limit}&offset=${offset}`)},
+    yours:(username,page)=>{
+        let offset= (page-1)*limit
+        return request.get(`/articles?author=${username}?limit=${limit}&offset=${offset}`)
+    } 
 }
 const setHeader=(token)=>{
     axios.defaults.headers.common['Authorization'] = `Token ${token}`;
@@ -23,6 +29,7 @@ const setHeader=(token)=>{
 const api={
     auth,
     setHeader,
-    article
+    article,
+    limit
 }
 export default api

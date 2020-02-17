@@ -1,0 +1,16 @@
+
+.article-preview{
+    border:none;
+    border-top:1px solid rgba(0,0,0,0.1);
+}
+.article-preview:first-child{
+    border-top:none;
+}
+.feeds .nav-link{
+    border:none;
+    color: rgba(0,0,0,0.3);
+}
+.feeds .nav-link.active{
+    border-bottom:3px solid green !important;
+    color: green;
+}
