@@ -4,6 +4,8 @@ import Home from './components/Home'
 import Register from './components/Register'
 import Login from './components/Login'
 import Header from './components/Header'
+import Editor from './components/Editor'
+import Profile from './components/Profile'
 import {push} from 'connected-react-router'
 import {connect} from 'react-redux'
 import store from './configureStore'
@@ -31,7 +33,6 @@ export class App extends Component {
   }
   componentWillMount(){
     let token= localStorage.getItem('jwt')
-    console.log(token)
     if(token){
       api.setHeader(token)
       let payload=api.auth.current()
@@ -46,6 +47,8 @@ export class App extends Component {
             <Route exact path="/" component={Home}/>
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
+            <Route path="/editor" component={Editor} />
+            <Route path="/@:username" component={Profile} />
             {/* <Route path="/@:username" component={Profile} /> */}
         </Switch>
       </div>

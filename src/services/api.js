@@ -18,10 +18,12 @@ const article={
     all:(page)=>{
         let offset= (page-1)*limit
         return request.get(`/articles?limit=${limit}&offset=${offset}`)},
-    yours:(username,page)=>{
-        let offset= (page-1)*limit
-        return request.get(`/articles?author=${username}?limit=${limit}&offset=${offset}`)
-    } 
+    create:(article)=>
+        request.post('/articles',{article})
+}
+const profile ={
+    get: (username)=>
+        request.get(`/profiles/${username}`)
 }
 const setHeader=(token)=>{
     axios.defaults.headers.common['Authorization'] = `Token ${token}`;
@@ -30,6 +32,7 @@ const api={
     auth,
     setHeader,
     article,
-    limit
+    limit,
+    profile
 }
 export default api

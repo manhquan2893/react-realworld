@@ -1,9 +1,16 @@
+import {ASYNC_START} from './constants/actionTypes'
 
 export const promiseMiddleware= store=> next=>action=>{
     if(isPromise(action.payload)){
+        store.dispatch({type:ASYNC_START,subType:action.type})
         action.payload.then((res)=>{
+            if(res.constructor === Array){
+                console.log(res)
+                action.payload=res
+                console.log(action)
+                next(action)
+            }
             action.payload=res.data
-            console.log(action)
             next(action)
         })
         .catch(({response})=>{

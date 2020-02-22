@@ -10,9 +10,15 @@ export default (state={currentPage:1},action)=>{
                 tab:'globalFeeds'
             }
         case CHANGE_TAB:
+            let articles=action.payload.articles
+            if(action.tab==='yourFeeds'){
+                articles=articles.filter((article)=>{
+                    return article.author.username===action.currentUsername
+                })
+            }
             return {
                 ...state,
-                articles:action.payload.articles,
+                articles,
                 articlesCount:action.payload.articlesCount/5,
                 tab:action.tab
             }

@@ -12,7 +12,7 @@ const LogInView=(props)=>{
                     <Navbar.Collapse>
                         <Nav className="ml-auto">
                             <Link to="/" className="nav-link">Home</Link>
-                            <Link to="/login" className="nav-link">New Posts</Link>
+                            <Link to="/editor" className="nav-link">New Posts</Link>
                             <Link to="/register" className="nav-link">Settings</Link> 
                             <Link to="/" className="nav-link">{props.currentUser.username}</Link>
                         </Nav>

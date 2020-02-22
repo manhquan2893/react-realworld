@@ -1,4 +1,5 @@
 export const REGISTER = 'REGISTER';
+export const ASYNC_START ='ASYNC_START';
 export const UPDATE_FIELD_AUTH = 'UPDATE_FIELD_AUTH';
 export const REDIRECT = 'REDIRECT';
 export const APP_LOAD = 'APP_LOAD';
@@ -6,3 +7,8 @@ export const LOGIN = 'LOGIN';
 export const HOME_PAGE_LOADED= 'HOME_PAGE_LOADED'
 export const CHANGE_TAB = 'CHANGE_TAB';
 export const SET_PAGE = 'SET_PAGE';
+export const UPDATE_FIELD_EDITOR = 'UPDATE_FIELD_EDITOR';
+export const ADD_TAG = 'ADD_TAG';
+export const ARTICLE_SUBMITTED = 'ARTICLE_SUBMITTED';
+export const REMOVE_TAG = 'REMOVE_TAG';
+export const PROFILE_LOADED = 'PROFILE_LOADED';

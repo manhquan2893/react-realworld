@@ -8,6 +8,7 @@ import App from './App'
 
 import './assets/bootstrap.min.css'
 import './assets/main.css'
+import './assets/fontawesome/css/all.min.css'
 
 
 ReactDOM.render(

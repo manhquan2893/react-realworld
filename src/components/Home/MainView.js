@@ -12,15 +12,16 @@ const mapStateToProps=(state)=>{
     }
 }
 const mapDispatchToProps=(dispatch)=>({
-    onTabClick: (tab,payload)=>{
-        dispatch({type:CHANGE_TAB,tab,payload})}
+    onTabClick: (tab,payload,currentUsername=null)=>{
+        dispatch({type:CHANGE_TAB,tab,payload,currentUsername})}
 })
 const Tabs= (props)=>{
     let token= props.token
     let yourFeedsClickHandler= (e)=>{
         e.preventDefault()
-        let payload=api.article.yours(props.currentUser.username,1)
-        props.onTabClick('yourFeeds',payload)
+        let payload=api.article.all(1)
+        let currentUsername=props.currentUser.username
+        props.onTabClick('yourFeeds',payload,currentUsername)
     }
     let gloalFeedsClickHandler = (e)=>{
         e.preventDefault()

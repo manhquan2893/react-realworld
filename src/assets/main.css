@@ -3,8 +3,45 @@
     border:none;
     border-top:1px solid rgba(0,0,0,0.1);
 }
+.article-card{
+    border:none;
+}
 .article-preview:first-child{
     border-top:none;
+}
+.article-preview img{
+    width: 32px;
+    margin-right: 3px;
+    border-radius: 50%;
+}
+.article-preview .like{
+    margin-right: 0;
+    margin-left: auto;
+    border:none;
+    background-color: white;
+    padding:5px;
+    outline: none;
+}
+.article-preview .like i{
+    color:rgba(0,0,0,0.5);
+}
+.article-preview .info{
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1rem;
+}
+.article-preview .username{
+    display: block;
+}
+.article-preview .createdAt{
+    font-size: 0.8rem;
+    color:rgba(0,0,0,0.5);
+}
+.article-preview .article-meta{
+    padding:16px 16px 0 16px;
+}
+.article-preview .card{
+    border: none;
 }
 .feeds .nav-link{
     border:none;
@@ -13,4 +50,47 @@
 .feeds .nav-link.active{
     border-bottom:3px solid green !important;
     color: green;
+}
+.tagList .tag{
+    background-color: rgba(0,0,0,0.5);
+    display: inline-block;
+    margin-right:4px;
+    margin-bottom: 3px;
+    padding:4px;
+    border-radius: 2px;
+}
+.tagList .tag .close{
+    line-height: 1rem;
+    display: block;
+    color: white;
+    cursor: pointer;
+}
+.profile .banner{
+    padding:40px;
+    background-color: rgba(0,0,0,0.18);
+}
+.profile .banner img{
+    width: 60px;
+    display: block;
+    margin: auto;
+    border-radius: 50%;
+}
+.profile .nav-tabs .nav-link{
+    border:none;
+    color:rgba(0,0,0,0.5);
+}
+.profile .nav-tabs .nav-link.active{
+    border-bottom: 2px solid green;
+}
+.profile .article-preview{
+    border-top: rgba(0,0,0,0.3);
+}
+.profile .article-preview a{
+    display: block;
+}
+.profile .article-meta span{
+    font-size: 0.9rem;
+}
+.profile .like{
+    float:right;
 }
